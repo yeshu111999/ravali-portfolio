@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-display: var(--font-playfair), ui-serif, Georgia, serif;
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+}
+
+@theme {
+  --color-cream: #fbf8f5;
+  --color-paper: #ffffff;
+  --color-ink: #1d1a1c;
+  --color-muted: #6b6266;
+  --color-line: #ece3e6;
+  --color-rose: #dc5a80;
+  --color-rose-deep: #b3365c;
+  --color-blush: #fdeef2;
+  --color-lilac: #f1ecfd;
+  --color-peach: #fff1e8;
+  --color-mint: #eaf7f1;
+
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-marquee: marquee 38s linear infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes heart-rise {
+    0% { opacity: 0; transform: translateY(10px) scale(0.5); }
+    20% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(-90px) scale(1.15) rotate(-8deg); }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 84px;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #f9c9d8;
+  color: var(--color-ink);
+}
+
+.text-gradient {
+  background: linear-gradient(100deg, #e76f93 0%, #c2457a 45%, #9b6ad6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
